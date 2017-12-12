@@ -5,3 +5,12 @@ c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\Mo
 c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\MobileSQL.pdb
 C:\Users\Fiach Reid\documents\visual studio 2013\Projects\MobileSQL\bin\MySql.Data.dll
 C:\Users\Fiach Reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
+C:\research\palm\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
+C:\research\palm\obj\Debug\MobileSQL.dll
+C:\research\palm\bin\MobileSQL.dll.config
+C:\research\palm\bin\MobileSQL.dll
+C:\research\palm\bin\MobileSQL.pdb
+C:\research\palm\bin\MySql.Data.dll
+C:\research\palm\bin\Newtonsoft.Json.dll
+C:\research\palm\bin\Newtonsoft.Json.xml
+C:\research\palm\obj\Debug\MobileSQL.pdb
