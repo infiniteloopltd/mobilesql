@@ -1,0 +1,7 @@
+c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\bin\MobileSQL.dll.config
+c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\bin\MobileSQL.dll
+c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\bin\MobileSQL.pdb
+c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\MobileSQL.dll
+c:\users\fiach reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\MobileSQL.pdb
+C:\Users\Fiach Reid\documents\visual studio 2013\Projects\MobileSQL\bin\MySql.Data.dll
+C:\Users\Fiach Reid\documents\visual studio 2013\Projects\MobileSQL\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
