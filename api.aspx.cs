@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using Oracle.ManagedDataAccess.Client;
 
 namespace MobileSQL
 {
@@ -15,33 +16,39 @@ namespace MobileSQL
                 var strDataSource = Request.QueryString["DataSource"];
                 var strUsername = Request.QueryString["Username"];
                 var strPassword = Request.QueryString["Password"];
-                var strSQL = Request.QueryString["SQL"];
-                var strDB = Request.QueryString["DB"].ToLower();
-                var dt = new DataTable();
-                if (strDB == "sql")
+                var strSql = Request.QueryString["SQL"];
+                var strDb = Request.QueryString["DB"].ToLower();
+                DataTable dt;
+                switch (strDb)
                 {
-                    dt = ExecuteMSSQL(strDataSource, strUsername, strPassword, strSQL);
+                    case "sql":
+                        dt = ExecuteMssql(strDataSource, strUsername, strPassword, strSql);
+                        break;
+                    case "oracle":
+                        var strServiceName = Request.QueryString["ServiceName"];
+                        var intPort = Convert.ToInt16(Request.QueryString["Port"]);
+                        dt = ExecuteOracle(strDataSource, intPort, strServiceName, strUsername, strPassword, strSql);
+                        break;
+                    default:
+                        dt = ExecuteMysql(strDataSource, strUsername, strPassword, strSql);
+                        break;
                 }
-                else
-                {
-                    dt = ExecuteMYSQL(strDataSource, strUsername, strPassword, strSQL);
-                }
-                string result = JsonConvert.SerializeObject(dt, Newtonsoft.Json.Formatting.Indented);
+                var result = JsonConvert.SerializeObject(dt, Formatting.Indented);
                 Response.Write(result);
             }
             catch(Exception ex)
             {
-                string result = JsonConvert.SerializeObject(ex, Newtonsoft.Json.Formatting.Indented);
+                var result = JsonConvert.SerializeObject(ex, Formatting.Indented);
                 Response.Write(result);
             }
         }
 
 
-        private DataTable ExecuteMSSQL(string strDataSource, string strUsername, string strPassword, string strSQL)
+        private static DataTable ExecuteMssql(string strDataSource, string strUsername, string strPassword, string strSql)
         {
-            var strDSNTemplate = "Network Library=DBMSSOCN;Data Source={0}; User ID={1}; Password={2};";
-            var sqlConnection = string.Format(strDSNTemplate, strDataSource, strUsername, strPassword);
-            var adapter = new SqlDataAdapter(strSQL, sqlConnection);
+            const string strDsnTemplate = "Network Library=DBMSSOCN;Data Source={0}; User ID={1}; Password={2};";
+            var sqlConnection = string.Format(strDsnTemplate, strDataSource, strUsername, strPassword);
+            var adapter = new SqlDataAdapter(strSql, sqlConnection);
             var dataSet = new DataSet();
             adapter.Fill(dataSet, "sql");
             var dt = dataSet.Tables["sql"];
@@ -49,15 +56,25 @@ namespace MobileSQL
         }
 
 
-        private DataTable ExecuteMYSQL(string strDataSource, string strUsername, string strPassword, string strSQL)
+        private static DataTable ExecuteMysql(string strDataSource, string strUsername, string strPassword, string strSql)
         {
-            var strDSNTemplate = "server={0}; uid={1}; pwd={2};";
-            var sqlConnection = string.Format(strDSNTemplate, strDataSource, strUsername, strPassword);
-            var adapter = new MySqlDataAdapter(strSQL, sqlConnection);
+            const string strDsnTemplate = "server={0}; uid={1}; pwd={2};";
+            var sqlConnection = string.Format(strDsnTemplate, strDataSource, strUsername, strPassword);
+            var adapter = new MySqlDataAdapter(strSql, sqlConnection);
             var dataSet = new DataSet();
             adapter.Fill(dataSet, "sql");
             var dt = dataSet.Tables["sql"];
             return dt;
+        }
+
+        private static DataTable ExecuteOracle(string strDataSource, int port, string serviceName, string strUsername, string strPassword, string strSQL)
+        {
+            const string strDsnTemplate = @"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT={1})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={2})));user id={3};Password={4}";
+            var sqlConnection = string.Format(strDsnTemplate, strDataSource, port, serviceName, strUsername, strPassword);
+            var adapter = new OracleDataAdapter(strSQL, sqlConnection) { SelectCommand = { CommandTimeout = 0 } };
+            var dataSet = new DataSet();
+            adapter.Fill(dataSet, "sql");
+            return dataSet.Tables["sql"];
         }
     }
 }

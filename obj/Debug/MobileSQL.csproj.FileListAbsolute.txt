@@ -14,3 +14,13 @@ C:\research\palm\bin\MySql.Data.dll
 C:\research\palm\bin\Newtonsoft.Json.dll
 C:\research\palm\bin\Newtonsoft.Json.xml
 C:\research\palm\obj\Debug\MobileSQL.pdb
+C:\projects\mobilesql\bin\MobileSQL.dll.config
+C:\projects\mobilesql\bin\MobileSQL.dll
+C:\projects\mobilesql\bin\MobileSQL.pdb
+C:\projects\mobilesql\bin\MySql.Data.dll
+C:\projects\mobilesql\bin\Newtonsoft.Json.dll
+C:\projects\mobilesql\bin\Oracle.ManagedDataAccess.dll
+C:\projects\mobilesql\bin\Newtonsoft.Json.xml
+C:\projects\mobilesql\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
+C:\projects\mobilesql\obj\Debug\MobileSQL.dll
+C:\projects\mobilesql\obj\Debug\MobileSQL.pdb
