@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using Oracle.ManagedDataAccess.Client;
+using Npgsql;
 
 namespace MobileSQL
 {
@@ -28,6 +29,10 @@ namespace MobileSQL
                         var strServiceName = Request.QueryString["ServiceName"];
                         var intPort = Convert.ToInt16(Request.QueryString["Port"]);
                         dt = ExecuteOracle(strDataSource, intPort, strServiceName, strUsername, strPassword, strSql);
+                        break;
+                    case "postgre":
+                        var strDatabaseName = Request.QueryString["DatabaseName"];
+                        dt = ExecutePostgre(strDataSource, strDatabaseName, strUsername, strPassword, strSql);
                         break;
                     default:
                         dt = ExecuteMysql(strDataSource, strUsername, strPassword, strSql);
@@ -72,6 +77,16 @@ namespace MobileSQL
             const string strDsnTemplate = @"Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT={1})))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME={2})));user id={3};Password={4}";
             var sqlConnection = string.Format(strDsnTemplate, strDataSource, port, serviceName, strUsername, strPassword);
             var adapter = new OracleDataAdapter(strSQL, sqlConnection) { SelectCommand = { CommandTimeout = 0 } };
+            var dataSet = new DataSet();
+            adapter.Fill(dataSet, "sql");
+            return dataSet.Tables["sql"];
+        }
+
+        private static DataTable ExecutePostgre(string strDataSource, string databaseName, string strUsername, string strPassword, string strSQL)
+        {
+            const string strDsnTemplate = @"Server={0};User Id={1}; Password={2};Database={3};";
+            var sqlConnection = string.Format(strDsnTemplate, strDataSource, strUsername, strPassword, databaseName);
+            var adapter = new NpgsqlDataAdapter(strSQL, sqlConnection) { SelectCommand = { CommandTimeout = 0 } };
             var dataSet = new DataSet();
             adapter.Fill(dataSet, "sql");
             return dataSet.Tables["sql"];

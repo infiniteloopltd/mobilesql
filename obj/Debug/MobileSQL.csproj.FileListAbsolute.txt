@@ -24,3 +24,7 @@ C:\projects\mobilesql\bin\Newtonsoft.Json.xml
 C:\projects\mobilesql\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
 C:\projects\mobilesql\obj\Debug\MobileSQL.dll
 C:\projects\mobilesql\obj\Debug\MobileSQL.pdb
+C:\projects\mobilesql\bin\Npgsql.dll
+C:\projects\mobilesql\bin\System.Threading.Tasks.Extensions.dll
+C:\projects\mobilesql\bin\Npgsql.xml
+C:\projects\mobilesql\bin\System.Threading.Tasks.Extensions.xml
