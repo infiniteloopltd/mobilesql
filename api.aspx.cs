@@ -8,6 +8,10 @@ using Npgsql;
 
 namespace MobileSQL
 {
+
+    /// <summary>
+    /// Note to self, this code is under source control at Github.
+    /// </summary>
     public partial class api : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
