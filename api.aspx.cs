@@ -43,6 +43,7 @@ namespace MobileSQL
                         break;
                 }
                 var result = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                if (result == "null") result = "[]";
                 Response.Write(result);
             }
             catch(Exception ex)
