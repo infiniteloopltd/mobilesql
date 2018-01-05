@@ -28,3 +28,17 @@ C:\projects\mobilesql\bin\Npgsql.dll
 C:\projects\mobilesql\bin\System.Threading.Tasks.Extensions.dll
 C:\projects\mobilesql\bin\Npgsql.xml
 C:\projects\mobilesql\bin\System.Threading.Tasks.Extensions.xml
+C:\research\mobilesql\bin\MobileSQL.dll.config
+C:\research\mobilesql\bin\MobileSQL.dll
+C:\research\mobilesql\bin\MobileSQL.pdb
+C:\research\mobilesql\bin\MySql.Data.dll
+C:\research\mobilesql\bin\Newtonsoft.Json.dll
+C:\research\mobilesql\bin\Npgsql.dll
+C:\research\mobilesql\bin\Oracle.ManagedDataAccess.dll
+C:\research\mobilesql\bin\System.Threading.Tasks.Extensions.dll
+C:\research\mobilesql\bin\Newtonsoft.Json.xml
+C:\research\mobilesql\bin\Npgsql.xml
+C:\research\mobilesql\bin\System.Threading.Tasks.Extensions.xml
+C:\research\mobilesql\obj\Debug\MobileSQL.csprojResolveAssemblyReference.cache
+C:\research\mobilesql\obj\Debug\MobileSQL.dll
+C:\research\mobilesql\obj\Debug\MobileSQL.pdb
